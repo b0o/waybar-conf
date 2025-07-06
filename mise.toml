@@ -1,0 +1,2 @@
+[tasks.reload]
+run = "killall -SIGUSR2 waybar"
