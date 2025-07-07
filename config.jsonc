@@ -85,9 +85,8 @@
     "on-click": "pavucontrol",
   },
   "custom/linear": {
-    "exec": "bun run --cwd ~/proj/linear-tools waybar",
+    "exec": "bun run --cwd ~/proj/linear-tools waybar --webhooks --quiet",
     "return-type": "json",
-    "interval": 60,
     "on-click": "niri-tools scratchpad toggle -n web-i",
     "on-click-right": "bun run --cwd ~/proj/linear-tools waybar --open",
     "on-scroll-up": "echo",
