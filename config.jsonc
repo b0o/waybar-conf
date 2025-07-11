@@ -1,110 +1,37 @@
-{
-  "layer": "top",
-  "position": "bottom",
-  "margin-top": 0,
-  "margin-bottom": 0,
-  "margin-left": 0,
-  "margin-right": 0,
-  "height": 30,
-  "reload_style_on_change": true,
-  "modules-left": [
-    "niri/workspaces",
-  ],
-  "modules-center": [
-    "niri/window",
-  ],
-  "modules-right": [
-    "custom/linear",
-    "custom/claude-time",
-    "systemd-failed-units",
-    "pulseaudio",
-    "idle_inhibitor",
-    "clock",
-  ],
-  "niri/window": {
-    "format": "{}",
-    "max-length": 80,
-    "rewrite": {
-      "": "Harsh",
-    },
-    "separate-outputs": true,
+[
+  {
+    "output": ["DP-2"],
+    "include": [
+      "~/.config/waybar/config.base.jsonc",
+    ],
+    "modules-left": [
+      "niri/workspaces",
+    ],
+    "modules-center": [
+      "niri/window",
+    ],
+    "modules-right": [
+      "custom/linear",
+      "custom/claude-time",
+      "systemd-failed-units",
+      "pulseaudio",
+      "idle_inhibitor",
+      "clock",
+    ],
   },
-  "niri/workspaces": {
-    "format": "<b>{index}</b> {name}",
-    "on-click": "activate",
-    "sort-by-number": true,
+  {
+    "output": ["DP-1"],
+    "include": [
+      "~/.config/waybar/config.base.jsonc",
+    ],
+    "modules-left": [
+      "niri/workspaces",
+    ],
+    "modules-center": [
+      "niri/window",
+    ],
+    "modules-right": [
+      "clock",
+    ],
   },
-  "clock": {
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
-    "format-alt": "{:%Y-%m-%d}",
-    "format": "{:%a %b %d %H:%M}",
-    "calendar": {
-      "mode": "year",
-      "mode-mon-col": 3,
-      "weeks-pos": "",
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#a593ea'><b>{}</b></span>",
-        "weekdays": "<span color='#ab9de0'>{}</span>",
-        "days": "<span color='#dfd9fb'>{}</span>",
-        "today": "<span color='#25213B' background='#d2f5ad'><big><b>{}</b></big></span>",
-      },
-    },
-  },
-  "idle_inhibitor": {
-    "timeout": 60,
-    "format": "{icon}",
-    "tooltip-format-activated": "Inhibit idle: {status}",
-    "tooltip-format-deactivated": "Inhibit idle: {status}",
-    "format-icons": {
-      "activated": "󰒳",
-      "deactivated": "󰤄",
-    },
-  },
-  "systemd-failed-units": {
-    "format": "<span color='#FF7D90'>  {nr_failed_system}/{nr_failed_user}</span>",
-    "hide-on-ok": true,
-    "system": true,
-    "user": true,
-    "on-click": "zsh -c 'rofi-systemd -f'",
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-bluetooth": "{icon} {volume}%  ",
-    "format-bluetooth-muted": "{icon}    ",
-    "format-muted": " ",
-    "format-icons": {
-      "headphone": " ",
-      "hands-free": " ",
-      "headset": " ",
-      "phone": " ",
-      "portable": " ",
-      "car": " ",
-      "default": [" ", " ", " ", " ", " ", " "],
-    },
-    "on-click": "pavucontrol",
-  },
-  "custom/linear": {
-    "exec": "bun run --cwd ~/proj/linear-tools waybar --webhooks --quiet",
-    "return-type": "json",
-    "on-click": "niri-tools scratchpad toggle -n web-i",
-    "on-click-right": "bun run --cwd ~/proj/linear-tools waybar --open",
-    "on-scroll-up": "echo",
-    "on-scroll-down": "echo",
-    "escape": true,
-    "format": "{}",
-  },
-  "custom/claude-time": {
-    "exec": "~/.config/waybar/bin/claude-usage.py",
-    "return-type": "json",
-    "interval": 30,
-    "format": "{}",
-    "escape": true,
-    "tooltip": true,
-    "states": {
-      "warning": 80,
-      "critical": 95,
-    },
-    "on-click": "echo",
-  },
-}
+]
